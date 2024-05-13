@@ -5,3 +5,13 @@ export const getPosts = () =>
 
 export const getPost = (id) =>
   axios.get("https://jsonplaceholder.typicode.com/posts/" + id);
+
+export const login = ({ email, password }) => {
+  console.log(email, password);
+  return Promise.resolve({
+    id: 1,
+    name: "User",
+    email: "user@gmail.com",
+    token: "token",
+  });
+};

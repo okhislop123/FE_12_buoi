@@ -6,19 +6,40 @@ import NotFound from "../page/notfound";
 import Movie from "../page/movie";
 import BaseLayout from "../components/BaseLayout";
 import Post from "../page/post";
+import AuthLayout from "../components/AuthLayout";
+import AuthRoute from "./AuthRoute";
+import BaseRoute from "./BaseRoute";
 
 export const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
+    path: "",
+    element: (
+      <AuthRoute>
+        <AuthLayout />
+      </AuthRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <Navigate to="/login" />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
   {
     path: "",
-    element: <BaseLayout />,
+    element: (
+      <BaseRoute>
+        <BaseLayout />
+      </BaseRoute>
+    ),
     children: [
       {
         index: true,
