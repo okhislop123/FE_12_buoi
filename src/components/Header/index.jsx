@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Menu, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [current, setCurrent] = useState("mail");
   const navigate = useNavigate();
+  const user = useSelector((store) => store.userReducer.user);
 
   const items = [
     {
@@ -39,7 +41,8 @@ const Header = () => {
         mode="horizontal"
         items={items}
       />
-      <div className="px-4 mt-3">
+      <div className="px-4 mt-3 flex items-center gap-4">
+        <div>Hello, {user?.name}</div>
         <Button onClick={onLogout}>Logout</Button>
       </div>
     </div>

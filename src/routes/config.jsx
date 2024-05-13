@@ -9,6 +9,7 @@ import Post from "../page/post";
 import AuthLayout from "../components/AuthLayout";
 import AuthRoute from "./AuthRoute";
 import BaseRoute from "./BaseRoute";
+import CountPage from "../page/count";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,11 @@ export const router = createBrowserRouter([
         element: <Post />,
       },
     ],
+  },
+
+  {
+    path: "/count",
+    element: <CountPage />,
   },
 
   {

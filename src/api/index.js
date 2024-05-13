@@ -15,3 +15,13 @@ export const login = ({ email, password }) => {
     token: "token",
   });
 };
+
+export const getMe = () => {
+  console.log(localStorage.getItem("token"));
+  return Promise.resolve({
+    id: 1,
+    name: "User",
+    email: "user@gmail.com",
+    token: "token",
+  });
+};

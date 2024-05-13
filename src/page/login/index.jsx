@@ -2,9 +2,12 @@ import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { login } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/reducers/user";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onFinish = async (values) => {
     try {
@@ -13,6 +16,7 @@ const Login = () => {
         password: values.password,
       });
       console.log(res);
+      dispatch(setUser(res));
       localStorage.setItem("token", res.token);
       navigate("/home");
     } catch (error) {
